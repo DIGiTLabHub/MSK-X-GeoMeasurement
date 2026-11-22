@@ -1,0 +1,335 @@
+[
+  {
+    "target": "COBB",
+    "model": "EfficientNet-B0",
+    "mae_ci": [
+      4.5279156197,
+      9.471215525
+    ],
+    "bias_ci": [
+      -3.5411033858,
+      2.2075286048
+    ],
+    "loa_lower_ci": [
+      -44.6499280732,
+      -7.6683243877
+    ],
+    "loa_upper_ci": [
+      10.6057410232,
+      39.1472993117
+    ],
+    "icc_ci": [
+      0.5927261182,
+      0.9568537692
+    ],
+    "proportional_bias_slope_ci": [
+      -0.7224013364,
+      -0.0564503534
+    ],
+    "n_cases": 73,
+    "n_independent_units": 73,
+    "mae": 6.3754070731,
+    "bias": -0.1269923454,
+    "loa_lower": -25.8035742342,
+    "loa_upper": 25.5495895434,
+    "proportional_bias_slope": -0.3726784007,
+    "proportional_bias_p": 0.0000010863,
+    "proportional_bias_p_holm_9": 0.000008690406
+  },
+  {
+    "target": "COBB",
+    "model": "ConvNeXt-T",
+    "mae_ci": [
+      3.0176959201,
+      8.6318991069
+    ],
+    "bias_ci": [
+      -5.3775670529,
+      0.8913376267
+    ],
+    "loa_lower_ci": [
+      -52.9617865429,
+      -6.5770157813
+    ],
+    "loa_upper_ci": [
+      7.2715052221,
+      43.647986226
+    ],
+    "icc_ci": [
+      0.4468046579,
+      0.9779298465
+    ],
+    "proportional_bias_slope_ci": [
+      -0.7850005841,
+      -0.0270938349
+    ],
+    "n_cases": 73,
+    "n_independent_units": 73,
+    "mae": 5.0799965336,
+    "bias": -1.5099422268,
+    "loa_lower": -30.315443613,
+    "loa_upper": 27.2955591595,
+    "proportional_bias_slope": -0.3489265944,
+    "proportional_bias_p": 0.0000793746,
+    "proportional_bias_p_holm_9": 0.0003174984
+  },
+  {
+    "target": "COBB",
+    "model": "ViT-B/16",
+    "mae_ci": [
+      4.0534474987,
+      9.4166828778
+    ],
+    "bias_ci": [
+      -4.3134179604,
+      1.794972167
+    ],
+    "loa_lower_ci": [
+      -48.4405619291,
+      -7.9087380591
+    ],
+    "loa_upper_ci": [
+      10.2347288665,
+      41.5537168184
+    ],
+    "icc_ci": [
+      0.5205294219,
+      0.9578336204
+    ],
+    "proportional_bias_slope_ci": [
+      -0.779498305,
+      -0.0510569559
+    ],
+    "n_cases": 73,
+    "n_independent_units": 73,
+    "mae": 6.0769191877,
+    "bias": -0.6541184922,
+    "loa_lower": -28.0553759329,
+    "loa_upper": 26.7471389485,
+    "proportional_bias_slope": -0.3856555617,
+    "proportional_bias_p": 0.0000034577,
+    "proportional_bias_p_holm_9": 0.0000242039
+  },
+  {
+    "target": "HVA",
+    "model": "EfficientNet-B0",
+    "mae_ci": [
+      2.7519165383,
+      3.8315875262
+    ],
+    "bias_ci": [
+      -0.2403957809,
+      1.2703001105
+    ],
+    "loa_lower_ci": [
+      -11.1307433,
+      -5.6993562375
+    ],
+    "loa_upper_ci": [
+      7.1158381745,
+      11.3723196761
+    ],
+    "icc_ci": [
+      0.8592156421,
+      0.943025256
+    ],
+    "proportional_bias_slope_ci": [
+      -0.2772545249,
+      -0.0735187532
+    ],
+    "n_cases": 176,
+    "n_independent_units": 133,
+    "mae": 3.24958857,
+    "bias": 0.5418414971,
+    "loa_lower": -8.1909016847,
+    "loa_upper": 9.2745846789,
+    "proportional_bias_slope": -0.1719584034,
+    "proportional_bias_p": 0.0014081409,
+    "proportional_bias_p_holm_9": 0.0037534299
+  },
+  {
+    "target": "HVA",
+    "model": "ConvNeXt-T",
+    "mae_ci": [
+      2.2124736642,
+      3.1569403652
+    ],
+    "bias_ci": [
+      -0.3133420191,
+      0.9472761425
+    ],
+    "loa_lower_ci": [
+      -9.8020736967,
+      -4.5920135659
+    ],
+    "loa_upper_ci": [
+      5.7177105353,
+      9.6448644073
+    ],
+    "icc_ci": [
+      0.8950239104,
+      0.9641278236
+    ],
+    "proportional_bias_slope_ci": [
+      -0.2407831082,
+      -0.0601943972
+    ],
+    "n_cases": 176,
+    "n_independent_units": 133,
+    "mae": 2.6215283013,
+    "bias": 0.3636413136,
+    "loa_lower": -6.9473930745,
+    "loa_upper": 7.6746757017,
+    "proportional_bias_slope": -0.1445233984,
+    "proportional_bias_p": 0.0030827603,
+    "proportional_bias_p_holm_9": 0.0037534299
+  },
+  {
+    "target": "HVA",
+    "model": "ViT-B/16",
+    "mae_ci": [
+      2.37884993,
+      3.306980101
+    ],
+    "bias_ci": [
+      -0.4570059459,
+      0.8277004787
+    ],
+    "loa_lower_ci": [
+      -9.9037160142,
+      -5.3583324951
+    ],
+    "loa_upper_ci": [
+      6.1936742799,
+      9.5214908088
+    ],
+    "icc_ci": [
+      0.8961200986,
+      0.9555122088
+    ],
+    "proportional_bias_slope_ci": [
+      -0.2550602505,
+      -0.0693674611
+    ],
+    "n_cases": 176,
+    "n_independent_units": 133,
+    "mae": 2.8025380852,
+    "bias": 0.2250382512,
+    "loa_lower": -7.4197412355,
+    "loa_upper": 7.869817738,
+    "proportional_bias_slope": -0.1588086781,
+    "proportional_bias_p": 0.0012511433,
+    "proportional_bias_p_holm_9": 0.0037534299
+  },
+  {
+    "target": "IMA",
+    "model": "EfficientNet-B0",
+    "mae_ci": [
+      1.6785673992,
+      2.0735257445
+    ],
+    "bias_ci": [
+      -0.2571464717,
+      0.4566022338
+    ],
+    "loa_lower_ci": [
+      -4.8492012937,
+      -3.8247574483
+    ],
+    "loa_upper_ci": [
+      3.8203582407,
+      5.2340596913
+    ],
+    "icc_ci": [
+      0.7360642187,
+      0.845616355
+    ],
+    "proportional_bias_slope_ci": [
+      -0.3359652904,
+      -0.1338473727
+    ],
+    "n_cases": 176,
+    "n_independent_units": 133,
+    "mae": 1.8737579157,
+    "bias": 0.0993193214,
+    "loa_lower": -4.3584665156,
+    "loa_upper": 4.5571051584,
+    "proportional_bias_slope": -0.2400624004,
+    "proportional_bias_p": 0.0000044874,
+    "proportional_bias_p_holm_9": 0.0000242039
+  },
+  {
+    "target": "IMA",
+    "model": "ConvNeXt-T",
+    "mae_ci": [
+      1.3477632333,
+      1.7113427251
+    ],
+    "bias_ci": [
+      -0.1003549467,
+      0.4786260258
+    ],
+    "loa_lower_ci": [
+      -3.9655093277,
+      -3.0253923764
+    ],
+    "loa_upper_ci": [
+      3.2847920156,
+      4.4600316529
+    ],
+    "icc_ci": [
+      0.8176326616,
+      0.8981034973
+    ],
+    "proportional_bias_slope_ci": [
+      -0.2735564961,
+      -0.1218546165
+    ],
+    "n_cases": 176,
+    "n_independent_units": 133,
+    "mae": 1.5234208592,
+    "bias": 0.1898537312,
+    "loa_lower": -3.5060105799,
+    "loa_upper": 3.8857180423,
+    "proportional_bias_slope": -0.1999029637,
+    "proportional_bias_p": 8.395E-7,
+    "proportional_bias_p_holm_9": 0.0000075555
+  },
+  {
+    "target": "IMA",
+    "model": "ViT-B/16",
+    "mae_ci": [
+      1.4149848556,
+      1.7435991465
+    ],
+    "bias_ci": [
+      -0.1668402009,
+      0.3973583146
+    ],
+    "loa_lower_ci": [
+      -4.1876531505,
+      -3.1528028903
+    ],
+    "loa_upper_ci": [
+      3.3551453836,
+      4.458731777
+    ],
+    "icc_ci": [
+      0.812362139,
+      0.8897842139
+    ],
+    "proportional_bias_slope_ci": [
+      -0.2959341404,
+      -0.12313933
+    ],
+    "n_cases": 176,
+    "n_independent_units": 133,
+    "mae": 1.574794784,
+    "bias": 0.1152832257,
+    "loa_lower": -3.6815408652,
+    "loa_upper": 3.9121073167,
+    "proportional_bias_slope": -0.2113523142,
+    "proportional_bias_p": 0.0000035694,
+    "proportional_bias_p_holm_9": 0.0000242039
+  }
+]

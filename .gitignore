@@ -1,9 +1,26 @@
-__pycache__/
-*.pyc
+# Python environments and caches
 .venv/
 venv/
-.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
 .ipynb_checkpoints/
 .DS_Store
+
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Generated outputs, downloaded images and model weights
 outputs/
 checkpoints/
+code/AASCE/
+code/HVAngleEst/
+code/MedImageInsights/
+code/external_models/
+code/cvpr/
+*.pt
+*.pth
+*.ckpt
+*.safetensors

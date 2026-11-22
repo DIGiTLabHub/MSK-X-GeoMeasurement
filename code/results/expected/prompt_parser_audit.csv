@@ -1,0 +1,7 @@
+provider,model_alias,target,parser_interval,n_attempts,n_successful_attempts,n_unique_successful_cases,n_failed_attempts,all_successful_predictions_match_parser_replay
+openai,gpt-4o,COBB,1 <= x <= 90,73,73,73,0,True
+openai,gpt-4o,HVA,5 <= x <= 90,176,176,176,0,True
+openai,gpt-4o,IMA,5 <= x <= 30,176,176,176,0,True
+claude,claude-sonnet-5,COBB,1 <= x <= 90,73,73,73,0,True
+claude,claude-sonnet-5,HVA,5 <= x <= 90,176,176,176,0,True
+claude,claude-sonnet-5,IMA,5 <= x <= 30,176,176,176,0,True

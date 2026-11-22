@@ -1,0 +1,90 @@
+{
+  "baseline_archive": "execution_code.zip",
+  "archive_sha256": "1583b060846fda29f58d22c3a6d572070cc6476b7db951ab022502bda245d1dd",
+  "source_files": [
+    {
+      "path": "scripts/benchmarks/cross_model_benchmark.py",
+      "source": "execution_code.zip:scripts/benchmarks/cross_model_benchmark.py",
+      "original_sha256": "e09f56630fac453ed182444c708c7ccef45ea54e2c5f88309d70ee134386b0f5",
+      "release_sha256": "2a0185876a3f08e6663eca3b50ef3ce8cbf607e7f72ccaee0247f402f12cc08d",
+      "modified_function_bodies": [
+        "aasce_splits",
+        "hvangle_splits"
+      ]
+    },
+    {
+      "path": "scripts/benchmarks/protocol_geometry_benchmark.py",
+      "source": "execution_code.zip:scripts/benchmarks/protocol_geometry_benchmark.py",
+      "original_sha256": "22c52d027254c141c8f9a3e1c5f1c918d0e4d5b8794fd522f8129c1a29a1040e",
+      "release_sha256": "09be7ccb6757ec120dad04686515a267acb656ad83fcdf11a5389735a58ecfbc",
+      "modified_function_bodies": [
+        "hvangle_splits"
+      ]
+    },
+    {
+      "path": "scripts/benchmarks/hvangle_axis_geometry_benchmark.py",
+      "source": "execution_code.zip:scripts/benchmarks/hvangle_axis_geometry_benchmark.py",
+      "original_sha256": "a990217ae29ed990dbdaf3b28f5e65bc89a7af9fa851f8555986f27b35dcd407",
+      "release_sha256": "a990217ae29ed990dbdaf3b28f5e65bc89a7af9fa851f8555986f27b35dcd407",
+      "modified_function_bodies": []
+    },
+    {
+      "path": "scripts/benchmarks/build_matched_prompt_results.py",
+      "source": "execution_code.zip:scripts/benchmarks/build_matched_prompt_results.py",
+      "original_sha256": "e3fd7219a3a3a147a0de98197c8a4e33fada22ca825145eb51b747edc61b5bbb",
+      "release_sha256": "e3fd7219a3a3a147a0de98197c8a4e33fada22ca825145eb51b747edc61b5bbb",
+      "modified_function_bodies": []
+    },
+    {
+      "path": "scripts/benchmarks/plot_hvangle_protocol_geometry.py",
+      "source": "execution_code.zip:scripts/benchmarks/plot_hvangle_protocol_geometry.py",
+      "original_sha256": "b5128ad0f85220a3cfea210f74aef0837eb90935738640c54eda898907f9d3f5",
+      "release_sha256": "98c3e59c869a932421041565efe78534875ffcafbcf03b283c629fe8eec7d0e4",
+      "modified_function_bodies": []
+    },
+    {
+      "path": "scripts/benchmarks/revision_statistics.py",
+      "source": "execution_code.zip:scripts/benchmarks/revision_statistics.py",
+      "original_sha256": "4ee8089a314aa7424ca6baf274b130b1486aae4e49f693bd524d73f889254b60",
+      "release_sha256": "54b42717b27fd4ff3ba00f005e1dd396c9c7188da9c75b7516eb25928b70a426",
+      "modified_function_bodies": []
+    },
+    {
+      "path": "scripts/benchmarks/summarize_benchmark.py",
+      "source": "execution_code.zip:scripts/benchmarks/summarize_benchmark.py",
+      "original_sha256": "14cbb165daf8a5682d2f1ada459de6199c7c20c5aa065844d15968efa44c19b4",
+      "release_sha256": "14cbb165daf8a5682d2f1ada459de6199c7c20c5aa065844d15968efa44c19b4",
+      "modified_function_bodies": []
+    },
+    {
+      "path": "scripts/experiments/run_anchor_free_prompt_sensitivity.py",
+      "source": "execution_code.zip:scripts/experiments/run_anchor_free_prompt_sensitivity.py",
+      "original_sha256": "d11defe3efc1e93042308063bb72e71477aed9b0c8b1d5431993cc102411f6f5",
+      "release_sha256": "034f6679dd9dd00f60038a849700505f177bc274add21e0f268bde9d7c98da97",
+      "modified_function_bodies": []
+    }
+  ],
+  "portability_changes": [
+    "MSK_WORKSPACE support through workspace_paths.py",
+    "Immutable split records used by data loaders",
+    "Default model set restricted to the current paper"
+  ],
+  "unmodified_training_and_evaluation_algorithms": true,
+  "function_body_changes": [
+    {
+      "file": "scripts/benchmarks/cross_model_benchmark.py",
+      "functions": [
+        "aasce_splits",
+        "hvangle_splits"
+      ],
+      "reason": "published split manifest path only"
+    },
+    {
+      "file": "scripts/benchmarks/protocol_geometry_benchmark.py",
+      "functions": [
+        "hvangle_splits"
+      ],
+      "reason": "published split manifest path only"
+    }
+  ]
+}

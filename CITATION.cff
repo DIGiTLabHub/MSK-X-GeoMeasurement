@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite this repository."
+type: software
+title: "MSK-X-GeoMeasurement: Measurement Readiness in Musculoskeletal Radiography"
+authors:
+  - family-names: Jiang
+    given-names: Hongcheng
+  - family-names: Chen
+    given-names: ZhiQiang
+  - family-names: Grote
+    given-names: Caleb W.
+  - family-names: Chan
+    given-names: Sherwin S.
+  - family-names: Han
+    given-names: Cheng
+  - family-names: Wang
+    given-names: Rong
+  - family-names: Xu
+    given-names: Dianxiang
+repository-code: "https://github.com/DIGiTLabHub/MSK-X-GeoMeasurement"
+url: "https://github.com/DIGiTLabHub/MSK-X-GeoMeasurement"
+abstract: "Code and saved-record statistical replay for the Geometric Construction Pathway and measurement-readiness evaluation in musculoskeletal radiography."

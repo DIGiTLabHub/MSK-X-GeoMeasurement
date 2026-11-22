@@ -1,0 +1,56 @@
+[
+  {
+    "target":"COBB",
+    "comparison":"MedImageInsight - BiomedCLIP",
+    "n_cases":73,
+    "n_independent_units":73,
+    "biomedclip_image_weighted_mae_seed_mean":9.4436094413,
+    "medimageinsight_image_weighted_mae_seed_mean":9.0310051972,
+    "biomedclip_mae_seed_mean":9.4436094413,
+    "medimageinsight_mae_seed_mean":9.0310051972,
+    "delta_mae_seed_mean":-0.4126042441,
+    "delta_mae_ci":[
+      -1.8884711726,
+      0.96554234
+    ],
+    "wilcoxon_statistic":1329.0,
+    "p_raw":0.9059112069,
+    "p_holm_3":0.9059112069
+  },
+  {
+    "target":"HVA",
+    "comparison":"MedImageInsight - BiomedCLIP",
+    "n_cases":176,
+    "n_independent_units":133,
+    "biomedclip_image_weighted_mae_seed_mean":7.6781459966,
+    "medimageinsight_image_weighted_mae_seed_mean":6.1500912535,
+    "biomedclip_mae_seed_mean":7.5070829402,
+    "medimageinsight_mae_seed_mean":6.1446240511,
+    "delta_mae_seed_mean":-1.3624588891,
+    "delta_mae_ci":[
+      -2.0202828922,
+      -0.7125193814
+    ],
+    "wilcoxon_statistic":2738.0,
+    "p_raw":0.0001147085,
+    "p_holm_3":0.0003441255
+  },
+  {
+    "target":"IMA",
+    "comparison":"MedImageInsight - BiomedCLIP",
+    "n_cases":176,
+    "n_independent_units":133,
+    "biomedclip_image_weighted_mae_seed_mean":2.82194714,
+    "medimageinsight_image_weighted_mae_seed_mean":2.7105878544,
+    "biomedclip_mae_seed_mean":2.82351188,
+    "medimageinsight_mae_seed_mean":2.6952353993,
+    "delta_mae_seed_mean":-0.1282764808,
+    "delta_mae_ci":[
+      -0.3720005731,
+      0.1104095352
+    ],
+    "wilcoxon_statistic":3870.0,
+    "p_raw":0.1885374632,
+    "p_holm_3":0.3770749264
+  }
+]

@@ -1,0 +1,4 @@
+-r requirements-training.txt
+open-clip-torch==2.32.0
+# MedImageInsight, MedCLIP and MedSAM also require their official source/weights.
+# See docs/MODELS.md. No model weights are redistributed.

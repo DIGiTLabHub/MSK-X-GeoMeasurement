@@ -1,0 +1,9 @@
+dataset,task,encoder,head_batch_size,feature_extraction_batch_size,selected_lr_wd_seed_17_42_73,best_epoch_seed_17_42_73,stop_epoch_seed_17_42_73,replay_predictions_match_original
+aasce,Cobb,BiomedCLIP,16,16,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,58/60/60,60/60/60,True
+aasce,Cobb,MedImageInsight,16,16,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,60/60/60,60/60/60,True
+aasce,Cobb,MedCLIP-Swin,16,16,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,59/60/60,60/60/60,True
+aasce,Cobb,MedSAM ViT-B,16,2,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,26/25/25,36/35/35,True
+hvangle,HVA/IMA,BiomedCLIP,16,16,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,60/60/59,60/60/60,True
+hvangle,HVA/IMA,MedImageInsight,16,16,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,60/59/60,60/60/60,True
+hvangle,HVA/IMA,MedCLIP-Swin,16,16,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,60/60/59,60/60/60,True
+hvangle,HVA/IMA,MedSAM ViT-B,16,2,0.0003/0.0001;0.0003/0.0001;0.0003/0.0001,60/58/60,60/60/60,True
