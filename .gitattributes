@@ -1,0 +1,6 @@
+# Keep immutable records byte-for-byte identical across platforms.
+code/records/** -text
+code/results/expected/** -text
+code/splits/** -text
+# Preserve the original CSV writer's CRLF records without whitespace warnings.
+*.csv whitespace=cr-at-eol
