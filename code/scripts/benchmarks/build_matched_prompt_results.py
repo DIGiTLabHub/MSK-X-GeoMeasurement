@@ -4,7 +4,7 @@
 The API runner appends audit records and may retain failed attempts.  This
 script accepts only the latest successful record for each expected
 provider-target-case tuple, verifies the frozen test order and references,
-then writes the compact metric manifests consumed by revision_statistics.py.
+then writes the compact metric manifests used by the paper statistics replay.
 """
 
 from __future__ import annotations

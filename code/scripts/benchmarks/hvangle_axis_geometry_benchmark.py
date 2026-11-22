@@ -27,7 +27,7 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms as T
 from torchvision.transforms import functional as TF
 
-from protocol_geometry_benchmark import (
+from foot_axis_data import (
     ROOT, acute_angle, hvangle_splits, measurement_metrics, seed_everything,
 )
 

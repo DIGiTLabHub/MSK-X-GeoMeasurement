@@ -22,7 +22,7 @@ The default replay uses 10,000 bootstrap draws and verifies 432 numerical fields
 
 | Inference examined | Conditions | Main execution code |
 | --- | --- | --- |
-| A numerical output establishes case-level agreement | Training-median baseline; matched GPT-4o / Claude Sonnet 5 prompts | `scripts/experiments/run_anchor_free_prompt_sensitivity.py` |
+| A numerical output establishes case-level agreement | Training-median baseline; matched GPT-4o / Claude Sonnet 5 prompts | `scripts/experiments/run_matched_prompts.py` |
 | Lower MAE establishes stronger agreement | Frozen readouts; end-to-end EfficientNet-B0, ConvNeXt-T and ViT-B/16 | `scripts/benchmarks/cross_model_benchmark.py` |
 | Spatial accuracy establishes final-angle agreement | Four-class foot-axis U-Net; fixed HVA/IMA construction; Dice and angle-error checkpoint selectors | `scripts/benchmarks/hvangle_axis_geometry_benchmark.py` |
 
@@ -45,7 +45,7 @@ code/
 └── tests/                      # synthetic agreement and patient-bootstrap checks
 ```
 
-For training and image-based figures, follow [data preparation](docs/DATA.md), [model setup](docs/MODELS.md), and the [full reproduction guide](docs/REPRODUCIBILITY.md). [Provenance](docs/PROVENANCE.md) distinguishes historical execution records from the current paper's comparison families. The historical `revision_statistics.py` has a broader scope; use `reproduce.py statistics` for the manuscript tables.
+For training and image-based figures, follow [data preparation](docs/DATA.md), [model setup](docs/MODELS.md), and the [full reproduction guide](docs/REPRODUCIBILITY.md). [Provenance](docs/PROVENANCE.md) distinguishes historical execution records from the current paper's comparison families. Use `reproduce.py statistics` for the manuscript comparison families.
 
 Run the statistical unit checks with:
 

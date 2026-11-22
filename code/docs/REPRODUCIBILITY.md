@@ -74,23 +74,23 @@ The second condition is the recorded post-hoc selector sensitivity. It changes c
 First inspect the dataset/prompt dry run:
 
 ```bash
-python code/scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+python code/scripts/experiments/run_matched_prompts.py \
   --provider openai --dry-run
-python code/scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+python code/scripts/experiments/run_matched_prompts.py \
   --provider claude --dry-run
 ```
 
 Real calls require `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in the environment and incur provider charges. They are never called by the offline replay. Use distinct output files:
 
 ```bash
-python code/scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+python code/scripts/experiments/run_matched_prompts.py \
   --provider openai --output "$MSK_WORKSPACE/outputs/results/matched_prompt_openai.jsonl"
-python code/scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+python code/scripts/experiments/run_matched_prompts.py \
   --provider claude --output "$MSK_WORKSPACE/outputs/results/matched_prompt_claude.jsonl"
 python code/scripts/benchmarks/build_matched_prompt_results.py
 ```
 
-Despite the historical runner filename, the executed prompts include numeric examples and explicit response bounds. Their exact text and original parser are retained. A prompt/model/payload change requires a distinct run/variant identifier; do not resume a changed interaction into historical output files. Mutable model aliases and provider transformations can change new results.
+The executed prompts include numeric examples and explicit response bounds. Their exact text and original parser are retained. A prompt/model/payload change requires a distinct run/variant identifier; do not resume a changed interaction into historical output files. Mutable model aliases and provider transformations can change new results.
 
 ## 6. Image-based figure
 
@@ -104,4 +104,4 @@ python code/scripts/benchmarks/plot_hvangle_protocol_geometry.py \
 
 Visual styling can differ from final manuscript layout edits. Axis directions, errors, and case selection come from the saved run. The newer prompt-distribution renderer preserves the numerical data and distinguishes training median and mean.
 
-The historical `scripts/benchmarks/revision_statistics.py` also contains analysis of earlier auxiliary conditions. It is retained for provenance, not as the current-paper entry point. Use `reproduce.py statistics` to obtain the stated comparison families.
+The public entry point is `reproduce.py statistics`. Historical training and analysis entry points outside the manuscript scope are excluded.

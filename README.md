@@ -77,7 +77,7 @@ python code/reproduce.py statistics --figures
 
 The replay needs **no radiographs, model weights, GPU, or API key**. It uses 10,000 bootstrap draws, checks **432 numerical fields** against the reference tables, and writes results to `code/outputs/paper_statistics/`.
 
-Release validation: all 432 fields matched within an absolute tolerance of 2 × 10⁻⁷; all five statistical unit checks passed. Full GPU retraining and new provider calls were not part of this packaging check. Details: [validation report](code/docs/VALIDATION.md).
+Release validation: all 432 fields matched within an absolute tolerance of 2 × 10⁻⁷; all five statistical unit checks and four input-integrity checks passed. Full GPU retraining and new provider calls were not part of this packaging check. Details: [validation report](code/docs/VALIDATION.md).
 
 ```bash
 python -m unittest discover -s code/tests -v
@@ -98,7 +98,7 @@ Obtain the datasets under their original access terms, then follow:
 
 The direct-regression budget uses seeds **17/42/73**, three learning-rate/weight-decay candidates, at most 60 epochs, and patience 10. See [paper configuration](code/configs/paper.json) for the executed settings. The structured-axis runs and provider interactions have their own settings documented in the reproduction guide.
 
-Dataset images and pretrained weights are obtained separately. The historical prompt-runner filename contains `anchor_free`, but the executed prompts include numeric examples and explicit response bounds; the exact prompt and parser are retained. New provider interactions can differ as model aliases change.
+Dataset images and pretrained weights are obtained separately. The matched prompts include numeric examples and explicit response bounds; the exact executed prompt and parser are retained. New provider interactions can differ as model aliases change.
 
 ## Repository structure
 

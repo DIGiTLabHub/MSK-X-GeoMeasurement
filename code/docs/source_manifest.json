@@ -6,62 +6,72 @@
       "path": "scripts/benchmarks/cross_model_benchmark.py",
       "source": "execution_code.zip:scripts/benchmarks/cross_model_benchmark.py",
       "original_sha256": "e09f56630fac453ed182444c708c7ccef45ea54e2c5f88309d70ee134386b0f5",
-      "release_sha256": "2a0185876a3f08e6663eca3b50ef3ce8cbf607e7f72ccaee0247f402f12cc08d",
       "modified_function_bodies": [
         "aasce_splits",
-        "hvangle_splits"
-      ]
+        "hvangle_splits",
+        "build_timm_model",
+        "medical_availability",
+        "extract_medical_features",
+        "main"
+      ],
+      "initial_release_sha256": "2a0185876a3f08e6663eca3b50ef3ce8cbf607e7f72ccaee0247f402f12cc08d",
+      "release_sha256": "c73f9f6129a537c3e46beb8a5badf0ef87cd05ac246b34ba894b65a0ea04fd82"
     },
     {
-      "path": "scripts/benchmarks/protocol_geometry_benchmark.py",
+      "path": "scripts/benchmarks/foot_axis_data.py",
       "source": "execution_code.zip:scripts/benchmarks/protocol_geometry_benchmark.py",
       "original_sha256": "22c52d027254c141c8f9a3e1c5f1c918d0e4d5b8794fd522f8129c1a29a1040e",
-      "release_sha256": "09be7ccb6757ec120dad04686515a267acb656ad83fcdf11a5389735a58ecfbc",
       "modified_function_bodies": [
         "hvangle_splits"
-      ]
+      ],
+      "initial_release_path": "scripts/benchmarks/protocol_geometry_benchmark.py",
+      "retained_definitions": [
+        "seed_everything",
+        "icc_2_1",
+        "measurement_metrics",
+        "parse_segment",
+        "acute_angle",
+        "SpatialRecord",
+        "hvangle_splits"
+      ],
+      "initial_release_sha256": "09be7ccb6757ec120dad04686515a267acb656ad83fcdf11a5389735a58ecfbc",
+      "release_sha256": "e9239c692015ccd965182023924df4df68fab970cc9d072d22606d7a8666920d"
     },
     {
       "path": "scripts/benchmarks/hvangle_axis_geometry_benchmark.py",
       "source": "execution_code.zip:scripts/benchmarks/hvangle_axis_geometry_benchmark.py",
       "original_sha256": "a990217ae29ed990dbdaf3b28f5e65bc89a7af9fa851f8555986f27b35dcd407",
-      "release_sha256": "a990217ae29ed990dbdaf3b28f5e65bc89a7af9fa851f8555986f27b35dcd407",
-      "modified_function_bodies": []
+      "modified_function_bodies": [],
+      "initial_release_sha256": "a990217ae29ed990dbdaf3b28f5e65bc89a7af9fa851f8555986f27b35dcd407",
+      "release_sha256": "08ab4112b0b7b9b14451e2ff751c9fc959e1458c3f38c454c2f1fb40cf15f2e3"
     },
     {
       "path": "scripts/benchmarks/build_matched_prompt_results.py",
       "source": "execution_code.zip:scripts/benchmarks/build_matched_prompt_results.py",
       "original_sha256": "e3fd7219a3a3a147a0de98197c8a4e33fada22ca825145eb51b747edc61b5bbb",
-      "release_sha256": "e3fd7219a3a3a147a0de98197c8a4e33fada22ca825145eb51b747edc61b5bbb",
-      "modified_function_bodies": []
+      "modified_function_bodies": [],
+      "initial_release_sha256": "e3fd7219a3a3a147a0de98197c8a4e33fada22ca825145eb51b747edc61b5bbb",
+      "release_sha256": "6de6ade479232341f4ec2c90eb5ab3e8afe3a263a191a7cb33341cc4344d60f3"
     },
     {
       "path": "scripts/benchmarks/plot_hvangle_protocol_geometry.py",
       "source": "execution_code.zip:scripts/benchmarks/plot_hvangle_protocol_geometry.py",
       "original_sha256": "b5128ad0f85220a3cfea210f74aef0837eb90935738640c54eda898907f9d3f5",
-      "release_sha256": "98c3e59c869a932421041565efe78534875ffcafbcf03b283c629fe8eec7d0e4",
-      "modified_function_bodies": []
+      "modified_function_bodies": [],
+      "initial_release_sha256": "98c3e59c869a932421041565efe78534875ffcafbcf03b283c629fe8eec7d0e4",
+      "release_sha256": "c8c838c7b2c05aaa2468d11536e0e9f4c9c0bc5a50bc6eff0e78ab8d9a25855d"
     },
     {
-      "path": "scripts/benchmarks/revision_statistics.py",
-      "source": "execution_code.zip:scripts/benchmarks/revision_statistics.py",
-      "original_sha256": "4ee8089a314aa7424ca6baf274b130b1486aae4e49f693bd524d73f889254b60",
-      "release_sha256": "54b42717b27fd4ff3ba00f005e1dd396c9c7188da9c75b7516eb25928b70a426",
-      "modified_function_bodies": []
-    },
-    {
-      "path": "scripts/benchmarks/summarize_benchmark.py",
-      "source": "execution_code.zip:scripts/benchmarks/summarize_benchmark.py",
-      "original_sha256": "14cbb165daf8a5682d2f1ada459de6199c7c20c5aa065844d15968efa44c19b4",
-      "release_sha256": "14cbb165daf8a5682d2f1ada459de6199c7c20c5aa065844d15968efa44c19b4",
-      "modified_function_bodies": []
-    },
-    {
-      "path": "scripts/experiments/run_anchor_free_prompt_sensitivity.py",
+      "path": "scripts/experiments/run_matched_prompts.py",
       "source": "execution_code.zip:scripts/experiments/run_anchor_free_prompt_sensitivity.py",
       "original_sha256": "d11defe3efc1e93042308063bb72e71477aed9b0c8b1d5431993cc102411f6f5",
-      "release_sha256": "034f6679dd9dd00f60038a849700505f177bc274add21e0f268bde9d7c98da97",
-      "modified_function_bodies": []
+      "modified_function_bodies": [
+        "parse_args",
+        "main"
+      ],
+      "initial_release_path": "scripts/experiments/run_anchor_free_prompt_sensitivity.py",
+      "initial_release_sha256": "034f6679dd9dd00f60038a849700505f177bc274add21e0f268bde9d7c98da97",
+      "release_sha256": "cc386e965d5280ecc5c6c1fe813974673693d98c83ab5c496945f6cc72c0968a"
     }
   ],
   "portability_changes": [
@@ -75,16 +85,35 @@
       "file": "scripts/benchmarks/cross_model_benchmark.py",
       "functions": [
         "aasce_splits",
-        "hvangle_splits"
+        "hvangle_splits",
+        "build_timm_model",
+        "medical_availability",
+        "extract_medical_features",
+        "main"
       ],
-      "reason": "published split manifest path only"
+      "reason": "Input validation, removal of non-paper branches, or CLI defaults only; retained scientific operations unchanged"
     },
     {
-      "file": "scripts/benchmarks/protocol_geometry_benchmark.py",
+      "file": "scripts/benchmarks/foot_axis_data.py",
       "functions": [
         "hvangle_splits"
       ],
-      "reason": "published split manifest path only"
+      "reason": "Input validation, removal of non-paper branches, or CLI defaults only; retained scientific operations unchanged"
+    },
+    {
+      "file": "scripts/experiments/run_matched_prompts.py",
+      "functions": [
+        "parse_args",
+        "main"
+      ],
+      "reason": "Input validation, removal of non-paper branches, or CLI defaults only; retained scientific operations unchanged"
     }
+  ],
+  "cleanup_scope": [
+    "Removed unused historical analysis/heatmap entry points and unrelated model adapters",
+    "Kept only foot helper definitions needed by the mask experiment and figure",
+    "Added strict paper-case/target/patient/image integrity checks",
+    "Moved default configuration to one source and separated provider output defaults",
+    "Removed three unused saved ablation records and a byte-identical CSV duplicate"
   ]
 }

@@ -12,7 +12,7 @@ The publication preparation makes these changes:
 4. `src/msk_geomeasurement/` and `reproduce.py` provide a CPU-only statistical replay and explicit current-paper comparison families.
 5. A vectorized bootstrap preserves the executed random draws. Synthetic tests compare it with literal block resampling; the paper replay verifies 432 reference fields at an absolute tolerance of 0.0000002 degrees or statistic units.
 
-Network definitions, training losses, model-specific transforms, fitting rules, HVA/IMA constructions and exact prompt strings remain unchanged. `docs/source_manifest.json` identifies the source of each executed script. The released helper for statistical replay uses the same mathematical definitions and is checked against the archived outputs.
+Network definitions, training losses, retained model-specific transforms, fitting rules, HVA/IMA constructions and exact prompt strings remain unchanged. Unused RadImageNet/DAX/MedCLIP-RN50/Bone-VLP execution branches, the surrogate Cobb heatmap trainer and the old analysis/summary entry points are excluded from the public entry points. Foot helper functions are retained in `foot_axis_data.py`. The prompt-protocol table points to the renamed public runner; its prompt strings, request settings and numerical entries are unchanged. Data loaders reject changed cohort identifiers, targets, patient groups or missing images. `docs/source_manifest.json` identifies the source of each executed script. The released helper for statistical replay uses the same mathematical definitions and is checked against the archived outputs.
 
 ## Current paper versus historical records
 
@@ -27,7 +27,7 @@ The current-paper replay keeps three supervised architectures and four frozen en
 | MedImageInsight versus BiomedCLIP across three targets | 3 |
 | Two prompt conditions versus the training median across three targets | 6 |
 
-The separate families do not constitute a global study-wide error guarantee. Some historical CSV field names contain `equivalence` or a broader family size; those original schemas are retained only as reference inputs. The public replay uses `baseline_similarity_criterion_met` and the current family names. The baseline-similarity rule is a post-hoc descriptive margin, not a formal equivalence conclusion.
+The separate families do not constitute a global study-wide error guarantee. Some historical CSV field names contain `equivalence` or a broader family size; those original schemas are retained only as reference inputs and must not be used as current-paper inferential results. The public replay uses `baseline_similarity_criterion_met` and the current family names. The baseline-similarity rule is a post-hoc descriptive margin, not a formal equivalence conclusion.
 
 `results/expected/` contains the manuscript-scoped reference tables from the authors' Frontiers materials. `records/` contains numerical execution records rather than model checkpoints. `splits/` records are derived from the original public dataset tables using the archived case order and patient grouping. No filenames, group assignments, predictions or values were invented.
 

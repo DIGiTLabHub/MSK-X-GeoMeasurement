@@ -10,15 +10,15 @@ Examples
 --------
 Verify all case IDs and prompts without making API calls:
 
-    python scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+    python scripts/experiments/run_matched_prompts.py \
         --provider openai --dry-run
 
 Run or resume one provider over every target:
 
-    OPENAI_API_KEY=... python scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+    OPENAI_API_KEY=... python scripts/experiments/run_matched_prompts.py \
         --provider openai
 
-    ANTHROPIC_API_KEY=... python scripts/experiments/run_anchor_free_prompt_sensitivity.py \
+    ANTHROPIC_API_KEY=... python scripts/experiments/run_matched_prompts.py \
         --provider claude
 """
 
@@ -46,7 +46,6 @@ CODE_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(CODE_ROOT / "scripts" / "benchmarks"))
 from cross_model_benchmark import ROOT, aasce_splits, hvangle_splits  # noqa: E402
 
-DEFAULT_OUTPUT = ROOT / "outputs/results/matched_prompt_evaluation.jsonl"
 
 PROMPTS = {
     "cobb": (
@@ -272,7 +271,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--target", choices=("all", "cobb", "hva", "ima"), default="all"
     )
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--output", type=Path, help="JSONL output; defaults to a separate file per provider")
     parser.add_argument("--delay", type=float, default=1.5)
     parser.add_argument("--attempts", type=int, default=4)
     parser.add_argument(
@@ -286,6 +285,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.output is None:
+        args.output = ROOT / f"outputs/results/matched_prompt_{args.provider}.jsonl"
     model = args.model or MODEL_DEFAULTS[args.provider]
     targets = ("cobb", "hva", "ima") if args.target == "all" else (args.target,)
     cases = load_cases(targets)

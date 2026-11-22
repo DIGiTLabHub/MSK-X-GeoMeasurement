@@ -21,13 +21,9 @@ from torch import nn
 from torch.utils.data import DataLoader, Dataset
 from torchvision import transforms as T
 
-from workspace_paths import ROOT, split_manifest
-DEFAULT_CONFIG = Path(__file__).with_name("config.json")
+from workspace_paths import CODE_ROOT, ROOT, split_manifest, validate_paper_records
+DEFAULT_CONFIG = CODE_ROOT / "configs" / "paper.json"
 DEFAULT_OUTPUT = ROOT / "outputs" / "benchmarks" / "controlled_cross_model"
-VERSIONED_DEPS = Path(__file__).with_name(f".deps-py{sys.version_info.major}{sys.version_info.minor}")
-LOCAL_DEPS = VERSIONED_DEPS if VERSIONED_DEPS.is_dir() else Path(__file__).with_name(".deps")
-if LOCAL_DEPS.is_dir():
-    sys.path.insert(0, str(LOCAL_DEPS))
 os.environ.setdefault("TORCH_HOME", str(ROOT / "outputs" / "model_cache" / "torch"))
 os.environ.setdefault("HF_HOME", str(ROOT / "outputs" / "model_cache" / "huggingface"))
 
@@ -141,7 +137,9 @@ def aasce_splits():
     def convert(names):
         return [{"id": name, "image_path": str(image_dir / name),
                  "targets": [primary_cobb[name]]} for name in names]
-    return {part: convert(split_ids[part]) for part in ("train", "val", "test")}, ["cobb"]
+    result = {part: convert(split_ids[part]) for part in ("train", "val", "test")}
+    validate_paper_records("aasce", result)
+    return result, ["cobb"]
 
 
 def hvangle_splits(unilateral_only=True, split_mode="official_image", split_seed=42):
@@ -192,6 +190,7 @@ def hvangle_splits(unilateral_only=True, split_mode="official_image", split_seed
         assert not (observed["train"] & observed["val"] or
                     observed["train"] & observed["test"] or
                     observed["val"] & observed["test"])
+    validate_paper_records("hvangle", result)
     return result, ["hva", "ima"]
 
 
@@ -231,30 +230,6 @@ def transforms(image_size, resize_mode="distort"):
 def build_timm_model(spec, outputs, pretrained=True):
     import timm
     model = timm.create_model(spec["architecture"], pretrained=pretrained, num_classes=outputs)
-    checkpoint = spec.get("checkpoint")
-    if spec["family"] == "radimagenet":
-        if not checkpoint or not Path(checkpoint).is_file():
-            raise FileNotFoundError("RadImageNet requires models.<id>.checkpoint in config.json")
-        state = torch.load(checkpoint, map_location="cpu", weights_only=False)
-        state = state.get("state_dict", state)
-        # The released PyTorch checkpoint stores torchvision ResNet children in
-        # a Sequential named ``backbone``. Map those keys to timm's equivalent
-        # module names and deliberately omit any task head.
-        child_names = {
-            "0": "conv1", "1": "bn1", "4": "layer1", "5": "layer2",
-            "6": "layer3", "7": "layer4",
-        }
-        mapped = {}
-        for key, value in state.items():
-            parts = key.split(".")
-            if len(parts) >= 3 and parts[0] == "backbone" and parts[1] in child_names:
-                mapped[".".join([child_names[parts[1]], *parts[2:]])] = value
-        if not mapped:
-            raise RuntimeError("RadImageNet checkpoint contains no recognized ResNet backbone keys")
-        incompatible = model.load_state_dict(mapped, strict=False)
-        loaded = len(mapped) - len(incompatible.unexpected_keys)
-        if loaded < 250:
-            raise RuntimeError(f"Only {loaded} RadImageNet tensors loaded; checkpoint mapping is invalid")
     return model
 
 
@@ -326,17 +301,10 @@ def medical_availability(spec):
             weight = (ROOT / "MedImageInsights" / "2024.09.27" / "vision_model" /
                       "medimageinsigt-v1.0.0.pt")
             return weight.is_file(), f"weight={weight}"
-        if spec["family"] == "radimagenet":
-            path = spec.get("checkpoint")
-            return bool(path and Path(path).is_file()), "set checkpoint in config"
-        if spec["family"] in {"medclip_resnet", "medclip_vit", "dax_resnet50", "medsam_encoder"}:
+        if spec["family"] in {"medclip_vit", "medsam_encoder"}:
             path = ROOT / spec["checkpoint"]
             return path.is_file(), f"checkpoint={path}"
-        if spec["family"] == "bonevlp":
-            path = ROOT / spec["checkpoint"]
-            return path.is_dir(), (
-                f"checkpoint={path}; official download host orthovlp.aenglecloud.com unavailable"
-            )
+        raise ValueError(f"unsupported paper encoder: {spec['family']}")
     except Exception as exc:
         return False, f"{type(exc).__name__}: {exc}"
     return True, "available"
@@ -383,11 +351,11 @@ def extract_medical_features(family, records, batch_size, device):
                 encoded_images.append(base64.b64encode(buffer.getvalue()).decode("ascii"))
             encoded = encoder.encode(images=encoded_images)["image_embeddings"]
             features.append(np.asarray(encoded)); labels.extend(r["targets"] for r in batch); ids.extend(r["id"] for r in batch)
-    elif family in {"medclip_resnet", "medclip_vit"}:
+    elif family == "medclip_vit":
         sys.path.insert(0, str(ROOT / "external_models" / "MedCLIP"))
-        from medclip import MedCLIPVisionModel, MedCLIPVisionModelViT
-        checkpoint_dir = ROOT / "checkpoints" / "MedCLIP" / ("resnet" if family.endswith("resnet") else "vit")
-        vision_cls = MedCLIPVisionModel if family.endswith("resnet") else MedCLIPVisionModelViT
+        from medclip import MedCLIPVisionModelViT
+        checkpoint_dir = ROOT / "checkpoints" / "MedCLIP" / "vit"
+        vision_cls = MedCLIPVisionModelViT
         model = vision_cls(medclip_checkpoint=str(checkpoint_dir)).eval().to(device)
         total_parameters = sum(p.numel() for p in model.parameters())
         preprocess = T.Compose([LetterboxResize(224), T.ToTensor(),
@@ -395,24 +363,6 @@ def extract_medical_features(family, records, batch_size, device):
         for start in range(0, len(records), batch_size):
             batch = records[start:start + batch_size]
             images = torch.stack([preprocess(Image.open(r["image_path"]).convert("L")) for r in batch]).to(device)
-            with torch.no_grad(): encoded = model(images)
-            encoded = encoded / encoded.norm(dim=-1, keepdim=True).clamp_min(1e-8)
-            features.append(encoded.cpu().numpy()); labels.extend(r["targets"] for r in batch); ids.extend(r["id"] for r in batch)
-    elif family == "dax_resnet50":
-        import torchvision.models as tv_models
-        checkpoint = torch.load(ROOT / "checkpoints" / "DAX" / "dax-resnet50-a.pth",
-                                map_location="cpu", weights_only=False)
-        teacher = checkpoint["teacher"]
-        state = {k.replace("module.backbone.", ""): v for k, v in teacher.items()
-                 if k.startswith("module.backbone.")}
-        model = tv_models.resnet50(weights=None); model.fc = nn.Identity()
-        model.load_state_dict(state, strict=True); model.eval().to(device)
-        total_parameters = sum(p.numel() for p in model.parameters())
-        preprocess = T.Compose([LetterboxResize(224), T.ToTensor(),
-                                T.Normalize([.5, .5, .5], [.5, .5, .5])])
-        for start in range(0, len(records), batch_size):
-            batch = records[start:start + batch_size]
-            images = torch.stack([preprocess(Image.open(r["image_path"]).convert("RGB")) for r in batch]).to(device)
             with torch.no_grad(): encoded = model(images)
             encoded = encoded / encoded.norm(dim=-1, keepdim=True).clamp_min(1e-8)
             features.append(encoded.cpu().numpy()); labels.extend(r["targets"] for r in batch); ids.extend(r["id"] for r in batch)
@@ -434,8 +384,6 @@ def extract_medical_features(family, records, batch_size, device):
             features.append(encoded.cpu().numpy()); labels.extend(r["targets"] for r in batch); ids.extend(r["id"] for r in batch)
         del model
         if device.type == "cuda": torch.cuda.empty_cache()
-    elif family == "bonevlp":
-        raise RuntimeError("Bone X-ray VLP adapter requires the authors' unavailable checkpoint directory")
     else:
         raise ValueError(f"unsupported medical feature family: {family}")
     return np.concatenate(features), np.asarray(labels, np.float32), ids, total_parameters
@@ -615,13 +563,7 @@ def main():
     for model_id in chosen:
         spec = config["models"][model_id]
         print(f"[{model_id}] {spec['family']} / {spec['adaptation']}")
-        if spec["family"] in {"timm", "radimagenet"}:
-            if spec["family"] == "radimagenet":
-                available, detail = medical_availability(spec)
-                if not available:
-                    manifest["models"][model_id] = {"status": "unavailable", "detail": detail,
-                                                     "adaptation": spec["adaptation"]}
-                    continue
+        if spec["family"] == "timm":
             try:
                 result = run_supervised(model_id, spec, splits, targets, config, args.output_dir, args.dry_run)
                 manifest["models"][model_id] = add_seed_summary(result, targets, config)

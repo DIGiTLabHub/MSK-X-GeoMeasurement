@@ -19,7 +19,7 @@ plt.rcParams.update({"pdf.fonttype": 42, "ps.fonttype": 42})
 
 from workspace_paths import ROOT
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from protocol_geometry_benchmark import hvangle_splits  # noqa: E402
+from foot_axis_data import hvangle_splits  # noqa: E402
 
 
 REFERENCE_COLOR = "#0072BD"
